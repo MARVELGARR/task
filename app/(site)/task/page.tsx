@@ -10,7 +10,7 @@ const Task = () => {
     const data: taskProps[] = [{
         id: "728ed52f",
         status: "pending",
-        title: "sign the deal",
+        task: "sign the deal",
         description: "a task to sign the deal",
         date_Created: new Date().toLocaleDateString('en-GB'),
         due_Date: new Date().toLocaleDateString('en-GB'),

@@ -17,7 +17,7 @@ export interface navItemsProps{
 
 export type taskProps = {
     id: string
-    title: string,
+    task: string,
     description: string,
     date_Created: string
     due_Date: string,
