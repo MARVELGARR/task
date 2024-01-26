@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="h-full flex items-center">
-          <SideBar className=' hidden md:flex border-r-teal-300 border-2 w-fit md:w-[200px] lg:w-[300px] xl:w-[400px]'/>
+        <div className="h-full flex items-center relative">
+          <SideBar className=' hidden sm:flex border-r-teal-300 border-2 w-fit md:w-[200px] lg:w-[300px] xl:w-[400px]'/>
           {children}
         </div>
         </body>

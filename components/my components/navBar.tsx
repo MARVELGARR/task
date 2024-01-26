@@ -13,7 +13,7 @@ const NavBar = ({className}: {className?: string}) => {
         {id: 1, name: 'dashboard', icon: <LayoutDashboard className='hover:fill-orange-600 hover:stroke-orange-600 stroke-orange-600' />, link:'/'},
         {id: 2, name: 'task', icon: <ListTodo className='hover:fill-orange-600 hover:stroke-orange-600 stroke-orange-600' />, link: "/task"}
     ]
-     const url = usePathname()
+    const url = usePathname()
 
     return (
         <ul className={cn('', className)}>

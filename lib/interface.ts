@@ -14,3 +14,12 @@ export interface navItemsProps{
     className?: string
     link: string   
 }
+
+export type taskProps = {
+    id: string
+    title: string,
+    description: string,
+    date_Created: string
+    due_Date: string,
+    status: "pending" | "completed" 
+}
