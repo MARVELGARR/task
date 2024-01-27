@@ -2,7 +2,7 @@
 import { cn } from '@/lib/utils';
 import NavItems from './navItems';
 
-import { LayoutDashboard, LayoutDashboardIcon, ListTodo, ThermometerSnowflake } from "lucide-react";
+import { LayoutDashboard, LayoutDashboardIcon, List, ListTodo, ThermometerSnowflake } from "lucide-react";
 import { navBarProps } from '@/lib/interface';
 import { usePathname } from 'next/navigation';
 
@@ -11,7 +11,8 @@ const NavBar = ({className}: {className?: string}) => {
 
     const navBar: navBarProps[] = [
         {id: 1, name: 'dashboard', icon: <LayoutDashboard className='hover:fill-orange-600 hover:stroke-orange-600 stroke-orange-600' />, link:'/'},
-        {id: 2, name: 'task', icon: <ListTodo className='hover:fill-orange-600 hover:stroke-orange-600 stroke-orange-600' />, link: "/task"}
+        {id: 2, name: 'task List', icon: <ListTodo className='hover:fill-orange-600 hover:stroke-orange-600 stroke-orange-600' />, link: "/taskList"},
+        {id: 2, name: 'task', icon: <List className='hover:fill-orange-600 hover:stroke-orange-600 stroke-orange-600' />, link: "/task"}
     ]
     const url = usePathname()
 

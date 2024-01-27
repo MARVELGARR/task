@@ -5,3 +5,8 @@
 body{
   height: 100vh;
 }
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust the min and max width of each card */
+  gap: 20px; /* Adjust the gap between cards */
+}

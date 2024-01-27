@@ -27,9 +27,9 @@ import { useToggleTaskForm } from "@/hooks/zustan/toggleTaskForm";
 import { useAddTask } from "@/hooks/zustan/task";
  
 const formSchema = z.object({
-    id: z.string().min(2, { message: "Must be 2 or more characters long" }),
-  task: z.string().min(2, { message: "Must be 2 or more characters long" }),
-  description: z.string().min(2, { message: "Must be 2 or more characters long" }),
+    id: z.string(),
+  task: z.string(),
+  description: z.string(),
   status: z.enum([ "pending", "completed" ]),
   date_Created: z.date(),
   due_Date: z.date()
@@ -51,9 +51,8 @@ const AddTaskForm = ({className}:{className?: string}) => {
     })
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        
+
+        addTask(values)
         console.log(values)
     }
 
