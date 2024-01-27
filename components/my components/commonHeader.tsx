@@ -6,16 +6,18 @@ import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useIsMenuOpenStore } from "@/hooks/zustan/menu";
 import MobileNav from "./mobileNav";
+import { useToggleTaskForm } from "@/hooks/zustan/toggleTaskForm";
 
 
 
 const CommonHeader = ({className}:{className?: string}) => {
 
     const { isOpen, change } = useIsMenuOpenStore();
+    const {  changeTask } = useToggleTaskForm()
 
     return (
         <div className={cn(' justify-between gap-[2rem]',className)}>
-            <Button className="hidden bg-orange-600 md:flex items-center hover:bg-orange-200/70 hover:text-orange-600  gap-2 rounded-xl border-0"><Plus className="stroke-white"/> Add Task</Button>
+            <Button onClick={changeTask} className="hidden bg-orange-600 md:flex items-center hover:bg-orange-200/70 hover:text-orange-600  gap-2 rounded-xl border-0"><Plus className="stroke-white"/> Add Task</Button>
 
             <SearchBar className={''}/>
 

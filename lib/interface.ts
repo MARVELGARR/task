@@ -19,7 +19,7 @@ export type taskProps = {
     id: string
     task: string,
     description: string,
-    date_Created: string
-    due_Date: string,
+    date_Created: Date
+    due_Date: Date,
     status: "pending" | "completed" 
 }

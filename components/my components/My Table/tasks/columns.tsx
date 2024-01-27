@@ -10,9 +10,10 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { ArrowUpDown, CheckCircle, Circle, CircleOff, MoreHorizontal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
+import { DataTableColumnHeader } from "../dataColummTable"
 export const columns: ColumnDef<taskProps>[] = [
     {
         id: "select",
@@ -38,7 +39,9 @@ export const columns: ColumnDef<taskProps>[] = [
       },
     {
       accessorKey: "task",
-      header: "Tasks",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} title="Task" />
+      ),
     },
     {
       accessorKey: "description",
@@ -60,7 +63,24 @@ export const columns: ColumnDef<taskProps>[] = [
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         )
-      },
+    },
+    cell: ({ row }) => {
+        const status = row.original.status
+   
+        return (
+            <div className="">
+              {status === 'completed' ? 
+              (<div className="flex items-center gap-2">
+                
+                  <CheckCircle className="h-4 w-4 text-green-500" />
+                  <span className="mr-2">{status}</span>
+                </div>):  ( <div className="flex items-center gap-2">
+                    <Circle className="h-4 w-4 fill-white" />
+                  <span className="mr-2">{status}</span>
+                </div>)}
+          </div>
+        )
+    }
   },
   {
     accessorKey: "due_Date",
@@ -98,7 +118,7 @@ export const columns: ColumnDef<taskProps>[] = [
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>View task</DropdownMenuItem>
-            <DropdownMenuItem>View task details</DropdownMenuItem>
+            <DropdownMenuItem>Edit task</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
