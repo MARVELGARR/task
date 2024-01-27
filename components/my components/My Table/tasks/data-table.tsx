@@ -24,9 +24,9 @@ import {
 import { Button } from "@/components/ui/button"
 import React from "react"
 import { Input } from "@/components/ui/input"
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { DataTablePagination } from "../dataTablePagination"
 import { DataTableViewOptions } from "../dataTableView"
+
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -62,6 +62,8 @@ export function DataTable<TData, TValue>({
             rowSelection,
         },
   })
+
+
 
   return (
     <div className="rounded-md border px-4">

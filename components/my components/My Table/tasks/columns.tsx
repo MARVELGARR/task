@@ -14,6 +14,9 @@ import { ArrowUpDown, CheckCircle, Circle, CircleOff, MoreHorizontal } from "luc
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { DataTableColumnHeader } from "../dataColummTable"
+import { useAddTask } from "@/hooks/zustan/task"
+
+
 export const columns: ColumnDef<taskProps>[] = [
     {
         id: "select",
@@ -100,7 +103,7 @@ export const columns: ColumnDef<taskProps>[] = [
     id: "actions",
     cell: ({ row }) => {
       const tasks = row.original
- 
+      const {removeTask} = useAddTask()
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -117,8 +120,8 @@ export const columns: ColumnDef<taskProps>[] = [
               Copy task ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View task</DropdownMenuItem>
             <DropdownMenuItem>Edit task</DropdownMenuItem>
+            <DropdownMenuItem onClick={()=>removeTask(tasks.id)}>Delete task</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

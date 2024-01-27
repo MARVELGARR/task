@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid';
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -38,10 +37,11 @@ const formSchema = z.object({
 const AddTaskForm = ({className}:{className?: string}) => {
 
     const { addTask, tasks } = useAddTask()
+    let ids = uuidv4()
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-          id: "",
+          id: '',
           task: '',
           description: '',
           status: "pending",
@@ -52,8 +52,9 @@ const AddTaskForm = ({className}:{className?: string}) => {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
 
-        addTask(values)
-        console.log(values)
+        const taskWithId = { ...values, id: uuidv4() };
+        addTask(taskWithId);
+        console.log(taskWithId);
     }
 
     const { changeTask } = useToggleTaskForm()
@@ -182,3 +183,4 @@ const AddTaskForm = ({className}:{className?: string}) => {
 }
  
 export default AddTaskForm;
+
