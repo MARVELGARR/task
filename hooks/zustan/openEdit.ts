@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 interface isOpenTaskForm{
   isOpenEditTask: boolean;
-  changeEdit: (id: string)=>void;
+  changeEdit: (id?: string)=>void;
   editId: string
 }
 export const useToggleEditTaskForm = create<isOpenTaskForm>((set) => ({

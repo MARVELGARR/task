@@ -5,7 +5,7 @@ interface isOpenTaskForm{
   changeTask: ()=>void;
 }
 export const useToggleTaskForm = create<isOpenTaskForm>((set) => ({
-  isOpenTask: true,
+  isOpenTask: false,
   changeTask: () => set((state: isOpenTaskForm) => ({ isOpenTask: !state.isOpenTask  })),
 }))
 

@@ -26,6 +26,7 @@ import React from "react"
 import { Input } from "@/components/ui/input"
 import { DataTablePagination } from "../dataTablePagination"
 import { DataTableViewOptions } from "../dataTableView"
+import { useAddTask } from "@/hooks/zustan/task"
 
 
 interface DataTableProps<TData, TValue> {
@@ -61,8 +62,13 @@ export function DataTable<TData, TValue>({
             columnVisibility,
             rowSelection,
         },
-  })
-
+    })
+    const { deleteSelectedRows } = useAddTask()
+    const handleDelete = () => {
+        const selectedRowIds = table.getSelectedRowModel().rows.map((row)=> row.original).map((ids)=> ids.id);
+        console.log(selectedRowIds);
+        deleteSelectedRows(selectedRowIds)
+    };
 
 
   return (
@@ -77,6 +83,7 @@ export function DataTable<TData, TValue>({
                 }
                 className="max-w-sm rounded-xl"
             />
+            <Button className=" border-1 bg-orange-600 rounded-xl hover:bg-orange-300" onClick={handleDelete}>Delet selected task</Button>
             <div className="flex-1 text-sm text-muted-foreground">
                 {table.getFilteredSelectedRowModel().rows.length} of{" "}
                 {table.getFilteredRowModel().rows.length} row(s) selected.

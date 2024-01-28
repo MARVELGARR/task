@@ -25,6 +25,7 @@ import { X } from "lucide-react";
 import { useToggleTaskForm } from "@/hooks/zustan/toggleTaskForm";
 import { useAddTask } from "@/hooks/zustan/task";
 import { useToggleEditTaskForm } from "@/hooks/zustan/openEdit";
+import { useEffect } from "react";
  
 const formSchema = z.object({
     id: z.string(),
@@ -38,6 +39,7 @@ const formSchema = z.object({
 const EditTaskForm = ({className}:{className?: string}) => {
 
     const { editTask, tasks } = useAddTask()
+    
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -51,6 +53,19 @@ const EditTaskForm = ({className}:{className?: string}) => {
     })
     const {editId, changeEdit } = useToggleEditTaskForm()
 
+    const taskToEdit = tasks.find(task => task.id === editId);
+
+    // Populate form with taskToEdit values
+    useEffect(()=>{
+
+        form.setValue('id', taskToEdit?.id || '');
+        form.setValue('task', taskToEdit?.task || '');
+        form.setValue('description', taskToEdit?.description || '');
+        form.setValue('status', taskToEdit?.status || 'pending');
+        form.setValue('date_Created', taskToEdit?.date_Created || new Date());
+        form.setValue('due_Date', taskToEdit?.due_Date || new Date());
+    },[])
+
     function onSubmit(values: z.infer<typeof formSchema>) {
 
         const taskWithId = { ...values, id: uuidv4() };
@@ -61,6 +76,8 @@ const EditTaskForm = ({className}:{className?: string}) => {
     }
 
     const { changeTask } = useToggleTaskForm()
+
+    
 
     return (
         <div className={cn('',className)}>
@@ -177,7 +194,7 @@ const EditTaskForm = ({className}:{className?: string}) => {
                                 )}
                                 />
                     <Button className='border-2 hover:bg-back bg-orange-600 text-white' type="submit">Submit</Button>
-                    <div onClick={changeTask} className="absolute cursor-pointer top-3 right-4"><X/></div>
+                    <div onClick={()=>changeEdit()} className="absolute cursor-pointer top-3 right-4"><X/></div>
                 </form>
                 </Form>
         </div>

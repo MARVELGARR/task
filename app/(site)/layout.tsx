@@ -18,7 +18,7 @@ const SiteLayout = ({children}: {children: ReactNode}) => {
 
                 <AddTaskForm className="pt-[10rem]"/>
             </div>)}
-            { isOpenEditTask && (<div className={cn('absolute flex left-0 right-0 top-0 pt- bottom-0 justify-center  z-50', isOpenTask ? "backdrop-blur-md filter" : '')}>
+            { isOpenEditTask && (<div className={cn('absolute flex left-0 right-0 top-0 pt- bottom-0 justify-center  z-50', isOpenEditTask ? "backdrop-blur-md filter" : '')}>
 
                 <EditTaskForm className="pt-[10rem]"/>
             </div>)}

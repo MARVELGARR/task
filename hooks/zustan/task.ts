@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-interface Task{
+export interface Task{
     id: string;
     task: string;
     description: string;
@@ -13,6 +13,7 @@ interface taskProps{
     addTask: (newTask: Task)=>void;
     removeTask: (id: string)=>void;
     editTask:(id: string, updatedTask: Task)=>void;
+    deleteSelectedRows: (selectedRowIds: string[]) => void;
 }
 export const useAddTask = create<taskProps>((set) => ({
     tasks: [],
@@ -27,5 +28,10 @@ export const useAddTask = create<taskProps>((set) => ({
             }
             return task;
         })
+    })),
+    deleteSelectedRows: (selectedRowIds) => set((state) => ({
+
+        tasks: state.tasks.filter((row) => !selectedRowIds.includes(row.id))
     }))
+    
 }))
