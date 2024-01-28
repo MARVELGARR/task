@@ -19,11 +19,11 @@ const NavBar = ({className}: {className?: string}) => {
     return (
         <ul className={cn('', className)}>
             {
-                navBar.map((item)=>{
+                navBar.map((item, index)=>{
                     return (
                         <NavItems
                             id={item.id}
-                            key={item.id}
+                            key={index}
                             name={item.name}
                             icon={item.icon}
                             link={item.link} 

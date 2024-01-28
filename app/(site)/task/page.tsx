@@ -1,4 +1,5 @@
 'use client'
+import CommonHeader from "@/components/my components/commonHeader";
 import TaskCard from "@/components/my components/taskCard";
 import { useAddTask } from "@/hooks/zustan/task";
 
@@ -7,7 +8,8 @@ import { useAddTask } from "@/hooks/zustan/task";
 const Task = () => {
     const {tasks} = useAddTask()
     return (
-        <div className="">
+        <div className="w-full h-full flex flex-col">
+            <CommonHeader className="flex w-full pt-2 h-[5rem] items-center px-[3rem]" />
             <div className="w-full h-full card-container p-[2rem]">
                 {tasks.map((items)=>{
                     return (

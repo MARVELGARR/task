@@ -1,7 +1,8 @@
+'use client'
 import { CardTitle, CardContent, Card } from "@/components/ui/card"
 import { Task, useAddTask } from "@/hooks/zustan/task"
 import { cn } from "@/lib/utils"
-import { JSX, SVGProps, useState } from "react"
+import { JSX, SVGProps, useEffect, useState } from "react"
 
 
 
@@ -13,8 +14,12 @@ export default function DashBoardCards({className}: {className?: string}) {
 
     const {tasks} = useAddTask()
 
-    setCompletedTask( tasks.filter((task)=>task.status === "completed"))
-    setpendingTask( tasks.filter((task)=>task.status === "pending"))
+    useEffect(()=>{
+
+        setCompletedTask( tasks.filter((task)=>task.status === "completed"))
+        setpendingTask( tasks.filter((task)=>task.status === "pending"))
+    },[tasks])
+
 
 
   return (
