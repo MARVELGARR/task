@@ -29,12 +29,16 @@ import { DataTableViewOptions } from "../dataTableView"
 import { useAddTask } from "@/hooks/zustan/task"
 
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+interface Task {
+    id: string;
+    // Add other properties of the Task object here
 }
 
-export function DataTable<TData, TValue>({
+interface DataTableProps<TData extends Task, TValue> {
+    columns: ColumnDef<TData, TValue>[];
+    data: TData[];
+}
+export function DataTable<TData extends Task, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
